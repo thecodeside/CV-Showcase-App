@@ -44,7 +44,7 @@ CV Showcase is based on MVVM architecture with use cases and repository pattern.
 - Add UI tests
 
 ## Find this project useful? :heart:
-Support it by giving a star, and join __[stargazers](https://github.com/thecodeside/CVShowcase/stargazers)__ :star: <br>
+Support it by giving a star, and join __[stargazers](https://github.com/thecodeside/CV-Showcase-App/stargazers)__ :star: <br>
 Also __[follow](https://github.com/thecodeside)__ me for future projects<br>
 See you on  __[The Code Side](https://www.thecodeside.com)__ <br>
 Artur Latoszewski
