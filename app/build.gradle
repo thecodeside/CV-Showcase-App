@@ -1,0 +1,120 @@
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    id("io.gitlab.arturbosch.detekt").version("1.15.0-RC1")
+    id("de.mannodermaus.android-junit5")
+}
+
+apply plugin: "de.mannodermaus.android-junit5"
+apply from: '../dependencies.gradle'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.thecodeside.cvshowcaseapp"
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures.viewBinding true
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions.freeCompilerArgs += ["-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"]
+        kotlinOptions.freeCompilerArgs += ["-Xopt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"]
+    }
+
+    kotlinOptions {
+        languageVersion = "1.4"
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+    implementation "androidx.core:core-ktx:$versions.androidxCore"
+    implementation "androidx.appcompat:appcompat:$versions.appCompat"
+    implementation "com.google.android.material:material:$versions.material"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.constraint"
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle" // TODO: 1/10/21 remove usage of livedata
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigation"
+
+    //network
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$versions.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$versions.okhttp"
+
+    // moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$versions.moshi"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi"
+
+    // coil
+    implementation("io.coil-kt:coil:$versions.coil")
+
+    //utils
+    implementation "com.jakewharton.timber:timber:$versions.timber"
+
+    // hilt
+    implementation "com.google.dagger:hilt-android:$versions.hiltCore"
+    implementation "androidx.hilt:hilt-common:$versions.hiltJetpack"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hiltJetpack"
+    kapt "com.google.dagger:hilt-compiler:$versions.hiltCore"
+    kapt "androidx.hilt:hilt-compiler:$versions.hiltJetpack"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$versions.hiltCore"
+    kaptAndroidTest "com.google.dagger:hilt-compiler:$versions.hiltCore"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$versions.junit5"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:$versions.junit5"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$versions.junit5"
+    testImplementation "com.github.thecodeside:timber-junit5-extension:$versions.timberJunit5"
+    testImplementation "io.mockk:mockk:$versions.mockk"
+    testImplementation "io.kotest:kotest-assertions-core:$versions.kotest"
+    testImplementation "app.cash.turbine:turbine:$versions.turbine"
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    detektPlugins "io.gitlab.arturbosch.detekt:detekt-formatting:1.15.0-RC1"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.1"
+}
+
+tasks.detekt.jvmTarget = "1.8"
+
+detekt {
+    failFast = true
+    buildUponDefaultConfig = true
+
+    reports {
+        html.enabled = true // observe findings in your browser with structure and code snippets
+    }
+}
+
+kapt {
+    correctErrorTypes true
+}

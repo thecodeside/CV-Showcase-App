@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="keyline_default">16dp</dimen>
+    <dimen name="default_item_separator">8dp</dimen>
+    <dimen name="contact_image_size">50dp</dimen>
+</resources>

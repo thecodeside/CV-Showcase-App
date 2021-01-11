@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/keyline_default"
+    tools:context=".features.contact.ContactFragment">
+
+    <ImageView
+        android:id="@+id/email"
+        android:layout_width="@dimen/contact_image_size"
+        android:layout_height="@dimen/contact_image_size"
+        app:tint="@color/black"
+        android:src="@drawable/ic_email_24"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="@dimen/default_item_separator" />
+
+    <ImageView
+        android:id="@+id/website"
+        android:layout_width="@dimen/contact_image_size"
+        android:layout_height="@dimen/contact_image_size"
+        app:tint="@color/black"
+        android:src="@drawable/ic_android_24"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="@dimen/default_item_separator"/>
+
+    <ImageView
+        android:id="@+id/linkedin"
+        android:layout_width="@dimen/contact_image_size"
+        android:layout_height="@dimen/contact_image_size"
+        app:tint="@color/black"
+        android:src="@drawable/ic_linkedin"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="@dimen/default_item_separator"/>
+
+    <ImageView
+        android:id="@+id/stackoverflow"
+        android:layout_width="@dimen/contact_image_size"
+        android:layout_height="@dimen/contact_image_size"
+        app:tint="@color/black"
+        android:src="@drawable/ic_stackoverflow"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginBottom="@dimen/default_item_separator"/>
+
+    <ImageView
+        android:id="@+id/medium"
+        android:layout_width="@dimen/contact_image_size"
+        android:layout_height="@dimen/contact_image_size"
+        app:tint="@color/black"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_medium"
+        android:layout_marginBottom="@dimen/default_item_separator"/>
+
+</LinearLayout>

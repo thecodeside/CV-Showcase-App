@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CV Artur Latoszewski</string>
+    <string name="title_experience">Experience</string>
+    <string name="title_about">About</string>
+    <string name="title_contact">Contact</string>
+    <string name="profile_picture_content_description">Profile picture</string>
+    <string name="keep_clicking">Keep clicking ;)</string>
+    <string name="easter_egg_url">https://www.thecodeside.com/easter-egg/</string>
+    <string name="about_me">About me:</string>
+    <string name="unknown_error">Unknown error occurred</string>
+    <string name="network_error">Network error. Check internet connection</string>
+    <string name="linkedin_url">https://www.linkedin.com/in/thecodeside/</string>
+    <string name="email_addres">artur@thecodeside.com</string>
+    <string name="website_url">https://www.thecodeside.com/</string>
+    <string name="medium_url">https://thecodeside.medium.com/</string>
+    <string name="stackoverflow_url">https://stackoverflow.com/users/1785443/artur-latoszewski</string>
+</resources>
