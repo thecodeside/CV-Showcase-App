@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.thecodeside.cvshowcaseapp.R
 import com.thecodeside.cvshowcaseapp.common.utils.DispatcherProvider
-import com.thecodeside.cvshowcaseapp.common.utils.guardCancellation
 import com.thecodeside.cvshowcaseapp.common.utils.isNetworkFailure
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -48,8 +48,8 @@ class AboutViewModel
                     profilePictureUrl = cvData.imageUrl,
                 )
             } catch (e: Exception) {
+                ensureActive()
                 Timber.e(e)
-                e.guardCancellation()
                 parseError(e)
             }
             withContext(dispatchers.main()) {
